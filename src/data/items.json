@@ -2,19 +2,19 @@
   {
     "id": 1,
     "name": "Iphone",
-    "price": 10.99,
+    "price": 30000,
     "imgUrl": "/image/phone-1.jpg"
   },
   {
     "id": 2,
-    "name": "samsung",
-    "price": 1199,
+    "name": "Samsung",
+    "price": 15000,
     "imgUrl": "/image/phone-2.jpg"
   },
   {
     "id": 3,
     "name": "Google Pix",
-    "price": 1.05,
+    "price": 20000,
     "imgUrl": "/image/phone-3.jpg"
   },
   {
