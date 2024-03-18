@@ -1,5 +1,6 @@
 import { Button, Card } from "react-bootstrap";
 import formatCurrency from "../utilities/formatCurrency";
+import useShoppingCart from "../context/useShoppingCart";
 
 type storeItemProps = {
   id: number;
@@ -8,7 +9,14 @@ type storeItemProps = {
   imgUrl: string;
 };
 export default function storeItem({ id, name, price, imgUrl }: storeItemProps) {
-  const quantity = 0;
+  const {
+    getItemQuantity,
+    incrementCartQuantity,
+    decrementCartQuantity,
+    removeFromCart,
+  } = useShoppingCart();
+
+  const quantity = getItemQuantity(id);
   return (
     <ul className="h-100">
       <li className="list-unstyled flex">
@@ -29,14 +37,20 @@ export default function storeItem({ id, name, price, imgUrl }: storeItemProps) {
       </li>
       <li className="mt-auto list-unstyled ">
         {quantity === 0 ? (
-          <Button className=" bg-secondary border-0 border">
+          <Button
+            onClick={() => incrementCartQuantity(id)}
+            className=" bg-secondary border-0 border"
+          >
             {" "}
-            + Add to Cart
+            + Add to Cart 
           </Button>
         ) : (
           <li className="list-unstyled d-flex justify-content-between">
             <li className="d-flex " style={{ gap: "2rem" }}>
-              <Button className="bg-secondary border-0 btn-sm">
+              <Button
+                onClick={() => decrementCartQuantity(id)}
+                className="bg-secondary border-0 btn-sm"
+              >
                 <svg
                   width="25px"
                   height="25px"
@@ -53,7 +67,10 @@ export default function storeItem({ id, name, price, imgUrl }: storeItemProps) {
               </Button>
               <span className="fs-4"> {quantity}</span>
 
-              <Button className="bg-secondary border-0 btn-sm">
+              <Button
+                onClick={() => incrementCartQuantity(id)}
+                className="bg-secondary border-0 btn-sm"
+              >
                 <svg
                   width="25px"
                   height="25px"
@@ -78,7 +95,10 @@ export default function storeItem({ id, name, price, imgUrl }: storeItemProps) {
               </Button>
             </li>
 
-            <Button className="bg-secondary border-0 ms-5 btn-sm">
+            <Button
+              onClick={() => removeFromCart(id)}
+              className="bg-secondary border-0 ms-5 btn-sm"
+            >
               <svg
                 width="25px"
                 height="25px"
