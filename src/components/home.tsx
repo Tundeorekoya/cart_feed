@@ -1,7 +1,9 @@
 
 const home = () => {
   return (
-    <div>home</div>
+    <>
+ CLICK ON THE STORE.      
+    </>
   )
 }
 
